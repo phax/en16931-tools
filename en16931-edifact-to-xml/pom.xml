@@ -21,13 +21,13 @@
   <parent>
     <groupId>com.helger.en16931</groupId>
     <artifactId>en16931-parent-pom</artifactId>
-    <version>2.0.5-SNAPSHOT</version>
+    <version>3.0.0-SNAPSHOT</version>
   </parent>
   <artifactId>en16931-edifact-to-xml</artifactId>
   <packaging>bundle</packaging>
   <name>en16931-edifact-to-xml</name>
   <description>The Altova Mapforce generated code to convert EDIFACT text files to ISO 20625 EDIFACT XML files</description>
-  <url>https://github.com/CenPc434/java-tools/en16931-edifact-to-xml</url>
+  <url>https://github.com/phax/en16931-tools/en16931-edifact-to-xml</url>
   <inceptionYear>2017</inceptionYear>
   
   <licenses>

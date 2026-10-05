@@ -21,14 +21,14 @@
   <parent>
     <groupId>com.helger.en16931</groupId>
     <artifactId>en16931-parent-pom</artifactId>
-    <version>2.0.5-SNAPSHOT</version>
+    <version>3.0.0-SNAPSHOT</version>
   </parent>
 
   <artifactId>en16931-xml-validator</artifactId>
   <packaging>jar</packaging>
   <name>en16931-xml-validator</name>
   <description>A generic XML validator that supports validation of XML files against arbitrary XML Schemas as well as Schematron files. It is meant to be used as a standalone application.</description>
-  <url>https://github.com/CenPc434/java-tools/en16931-xml-validator</url>
+  <url>https://github.com/phax/en16931-tools/en16931-xml-validator</url>
   <inceptionYear>2017</inceptionYear>
  
   <licenses>
@@ -46,6 +46,10 @@
     </dependency>
     <dependency>
       <groupId>com.helger.schematron</groupId>
+      <artifactId>ph-schematron-isosch</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.helger.schematron</groupId>
       <artifactId>ph-schematron-xslt</artifactId>
     </dependency>
     <dependency>
@@ -53,12 +57,16 @@
       <artifactId>ph-schematron-pure</artifactId>
     </dependency>
     <dependency>
+      <groupId>com.sun.xml.bind</groupId>
+      <artifactId>jaxb-impl</artifactId>
+    </dependency>
+    <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-core</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-slf4j-impl</artifactId>
+      <artifactId>log4j-slf4j2-impl</artifactId>
     </dependency>
   </dependencies>
 

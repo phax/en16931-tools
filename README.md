@@ -11,6 +11,11 @@ All projects contained in here are Apache 2 licensed.
 
 ## News and noteworthy:
 
+* v3.0.0 - work in progress
+    * Java 25 is now the minimum requirement
+    * Updated to ph-commons 12, ph-xsds 4 and ph-schematron 10
+    * Switched the JAXB generation to Jakarta XML Binding 4
+    * Updated to Log4j 2.26.1
 * v2.0.4 - 2021-03-22
     * Updated to ph-commons 10
 * v2.0.3 - 2020-11-25

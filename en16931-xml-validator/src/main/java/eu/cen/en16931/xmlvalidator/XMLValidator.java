@@ -21,19 +21,18 @@ package eu.cen.en16931.xmlvalidator;
 import java.io.File;
 import java.io.IOException;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import javax.xml.validation.Validator;
 
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.SAXException;
 
-import com.helger.commons.annotation.Nonempty;
-import com.helger.commons.collection.impl.ICommonsList;
-import com.helger.commons.io.resource.FileSystemResource;
+import com.helger.annotation.Nonempty;
+import com.helger.collection.commons.ICommonsList;
+import com.helger.io.resource.FileSystemResource;
 import com.helger.schematron.ISchematronResource;
-import com.helger.schematron.SchematronHelper;
 import com.helger.schematron.pure.SchematronResourcePure;
 import com.helger.schematron.sch.SchematronResourceSCH;
 import com.helger.schematron.svrl.SVRLFailedAssert;
@@ -61,12 +60,12 @@ public final class XMLValidator
 
     private final String m_sName;
 
-    EMode (@Nonnull @Nonempty final String sName)
+    EMode (@NonNull @Nonempty final String sName)
     {
       m_sName = sName;
     }
 
-    @Nonnull
+    @NonNull
     @Nonempty
     public String getDisplayName ()
     {
@@ -184,7 +183,7 @@ public final class XMLValidator
     LOGGER.info ("=========================================");
   }
 
-  public static boolean validateXMLSchema (@Nonnull final File xsdPath, @Nonnull final File xmlPath)
+  public static boolean validateXMLSchema (@NonNull final File xsdPath, @NonNull final File xmlPath)
   {
     try
     {
@@ -200,9 +199,9 @@ public final class XMLValidator
     return true;
   }
 
-  public static boolean validateXMLSchematron (@Nonnull final File schPath,
-                                               @Nonnull final EMode eMode,
-                                               @Nonnull final File xmlPath,
+  public static boolean validateXMLSchematron (@NonNull final File schPath,
+                                               @NonNull final EMode eMode,
+                                               @NonNull final File xmlPath,
                                                @Nullable final File svrlPath)
   {
     final FileSystemResource aXML = new FileSystemResource (xmlPath);
@@ -212,7 +211,16 @@ public final class XMLValidator
     final ISchematronResource aSchematron = eMode == EMode.PURE ? new SchematronResourcePure (aSCH)
                                                                 : eMode == EMode.XSLT ? new SchematronResourceXSLT (aSCH)
                                                                                       : new SchematronResourceSCH (aSCH);
-    final SchematronOutputType aSOT = SchematronHelper.applySchematron (aSchematron, aXML);
+    SchematronOutputType aSOT;
+    try
+    {
+      aSOT = aSchematron.applySchematronValidationToSVRL (aXML);
+    }
+    catch (final Exception ex)
+    {
+      LOGGER.error ("Error applying Schematron " + aSchematron + " to " + aXML, ex);
+      aSOT = null;
+    }
     if (aSOT == null)
     {
       LOGGER.info ("Schematron file " + aSchematron + " is malformed!");

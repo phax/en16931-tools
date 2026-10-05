@@ -23,7 +23,7 @@ import javax.xml.XMLConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.helger.commons.io.file.FileHelper;
+import com.helger.io.file.FileHelper;
 import com.helger.schematron.api.xslt.ISchematronXSLTBasedProvider;
 import com.helger.schematron.sch.SchematronResourceSCH;
 import com.helger.schematron.svrl.CSVRL;
